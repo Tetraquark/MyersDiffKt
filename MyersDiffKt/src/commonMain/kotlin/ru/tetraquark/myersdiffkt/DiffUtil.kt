@@ -25,7 +25,7 @@ object DiffUtil {
                     emit(Change.Remove(endX, posOld - endX))
                 }
                 if (endY < posNew) {
-                    emit(Change.Insert(endX, posNew - endY))
+                    emit(Change.Insert(endX, endY, posNew - endY))
                 }
                 posOld = it.start
                 posNew = it.end
@@ -63,7 +63,7 @@ class DiffResult internal constructor(
                 onChange(Change.Remove(endX, posOld - endX))
             }
             if (endY < posNew) {
-                onChange(Change.Insert(endX, posNew - endY))
+                onChange(Change.Insert(endX, endY, posNew - endY))
             }
             posOld = it.start
             posNew = it.end

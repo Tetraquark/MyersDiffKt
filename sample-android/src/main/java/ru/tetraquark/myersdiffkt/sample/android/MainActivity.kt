@@ -72,10 +72,10 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 .collect {
                     when (it) {
                         is Change.Remove -> {
-                            rvAdapter.notifyItemRangeRemoved(it.from, it.count)
+                            rvAdapter.notifyItemRangeRemoved(it.fromOldListIndex, it.count)
                         }
                         is Change.Insert -> {
-                            rvAdapter.notifyItemRangeInserted(it.from, it.count)
+                            rvAdapter.notifyItemRangeInserted(it.toOldListIndex, it.count)
                         }
                     }
                 }

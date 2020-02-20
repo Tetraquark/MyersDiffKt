@@ -6,12 +6,18 @@ group = "ru.tetraquark.myersdiffkt"
 version = "1.0"
 
 kotlin {
-    jvm()
+    jvm {
+        withJava()
+    }
 
     sourceSets {
+        // for unit-tests purposes
+        all {
+            languageSettings.useExperimentalAnnotation("kotlin.Experimental")
+        }
+
         commonMain {
             dependencies {
-                //implementation("org.jetbrains.kotlin:kotlin-stdlib-common:1.3.61")
                 implementation(kotlin("stdlib-common"))
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.3")
             }
@@ -20,6 +26,15 @@ kotlin {
             dependencies {
                 implementation(kotlin("stdlib"))
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3")
+            }
+        }
+        val jvmTest by getting {
+            dependencies {
+                implementation(kotlin("stdlib"))
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3")
+                implementation(kotlin("test"))
+                implementation(kotlin("test-junit"))
+
             }
         }
     }

@@ -1,6 +1,6 @@
 package ru.tetraquark.myersdiffkt
 
 sealed class Change {
-    class Insert(val from: Int, val count: Int) : Change()
-    class Remove(val from: Int, val count: Int) : Change()
+    class Insert(val toOldListIndex: Int, val fromNewListIndex: Int, val count: Int) : Change()
+    class Remove(val fromOldListIndex: Int, val count: Int) : Change()
 }
