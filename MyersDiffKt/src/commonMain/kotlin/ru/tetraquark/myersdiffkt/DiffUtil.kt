@@ -12,23 +12,13 @@ object DiffUtil {
         newListSize: Int,
         comparator: (oldItemIndex: Int, newItemIndex: Int) -> Boolean
     ): Flow<Change> {
-        var posOld = oldListSize
-        var posNew = newListSize
-
         return flow {
-            myersDiff.findSnakes(oldListSize, newListSize, comparator).asReversed().forEach {
-                val snakeOffset = it.offset
-                val endX = it.start + snakeOffset
-                val endY = it.end + snakeOffset
-
-                if (endX < posOld) {
-                    emit(Change.Remove(endX, posOld - endX))
-                }
-                if (endY < posNew) {
-                    emit(Change.Insert(endX, endY, posNew - endY))
-                }
-                posOld = it.start
-                posNew = it.end
+            convertSnakesToChanges(
+                myersDiff.findSnakes(oldListSize, newListSize, comparator),
+                oldListSize,
+                newListSize
+            ) {
+                emit(it)
             }
         }
     }
@@ -38,7 +28,11 @@ object DiffUtil {
         newListSize: Int,
         comparator: (oldItemIndex: Int, newItemIndex: Int) -> Boolean
     ): DiffResult {
-        return DiffResult(oldListSize, newListSize, myersDiff.findSnakes(oldListSize, newListSize, comparator))
+        return DiffResult(
+            oldListSize,
+            newListSize,
+            myersDiff.findSnakes(oldListSize, newListSize, comparator)
+        )
     }
 
 }
@@ -49,25 +43,37 @@ class DiffResult internal constructor(
     private val snakes: List<Snake>
 ) {
 
-    fun applyChanges(
-        onChange: (change: Change) -> Unit
-    ) {
-        var posOld = oldListSize
-        var posNew = newListSize
-        snakes.asReversed().forEach {
-            val snakeOffset = it.offset
-            val endX = it.start + snakeOffset
-            val endY = it.end + snakeOffset
-
-            if (endX < posOld) {
-                onChange(Change.Remove(endX, posOld - endX))
-            }
-            if (endY < posNew) {
-                onChange(Change.Insert(endX, endY, posNew - endY))
-            }
-            posOld = it.start
-            posNew = it.end
+    fun applyChanges(onChange: (change: Change) -> Unit) {
+        convertSnakesToChanges(snakes, oldListSize, newListSize) {
+            onChange(it)
         }
+
+    }
+
+}
+
+private inline fun convertSnakesToChanges(
+    snakes: List<Snake>,
+    oldListSize: Int,
+    newListSize: Int,
+    emitter: (Change) -> Unit
+) {
+    var posOld = oldListSize
+    var posNew = newListSize
+
+    snakes.asReversed().forEach {
+        val snakeOffset = it.offset
+        val endX = it.start + snakeOffset
+        val endY = it.end + snakeOffset
+
+        if (endX < posOld) {
+            emitter(Change.Remove(endX, posOld - endX))
+        }
+        if (endY < posNew) {
+            emitter(Change.Insert(endX, endY, posNew - endY))
+        }
+        posOld = it.start
+        posNew = it.end
     }
 
 }
