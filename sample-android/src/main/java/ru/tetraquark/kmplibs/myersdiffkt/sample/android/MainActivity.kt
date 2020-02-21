@@ -1,4 +1,4 @@
-package ru.tetraquark.myersdiffkt.sample.android
+package ru.tetraquark.kmplibs.myersdiffkt.sample.android
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,8 +11,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
-import ru.tetraquark.myersdiffkt.DiffUtil
-import ru.tetraquark.myersdiffkt.Change
+import ru.tetraquark.kmplibs.myersdiffkt.DiffUtil
+import ru.tetraquark.kmplibs.myersdiffkt.Change
 import kotlin.coroutines.CoroutineContext
 
 class MainActivity : AppCompatActivity(), CoroutineScope {

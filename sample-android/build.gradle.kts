@@ -8,7 +8,7 @@ android {
     compileSdkVersion(29)
     buildToolsVersion = "29.0.2"
     defaultConfig {
-        applicationId = "ru.tetraquark.myersdiffkt.sample.android"
+        applicationId = "ru.tetraquark.kmplibs.myersdiffkt.sample.android"
         minSdkVersion(21)
         targetSdkVersion(29)
 

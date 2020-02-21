@@ -1,4 +1,4 @@
-package ru.tetraquark.myersdiffkt
+package ru.tetraquark.kmplibs.myersdiffkt
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

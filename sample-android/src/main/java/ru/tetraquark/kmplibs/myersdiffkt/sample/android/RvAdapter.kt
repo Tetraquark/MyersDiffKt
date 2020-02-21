@@ -1,4 +1,4 @@
-package ru.tetraquark.myersdiffkt.sample.android
+package ru.tetraquark.kmplibs.myersdiffkt.sample.android
 
 import android.view.LayoutInflater
 import android.view.View

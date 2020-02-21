@@ -3,7 +3,7 @@ plugins {
     id("maven-publish")
 }
 
-group = "ru.tetraquark.myersdiffkt"
+group = "ru.tetraquark.kmplibs.myersdiffkt"
 version = Versions.MyersDiffKt
 
 kotlin {
