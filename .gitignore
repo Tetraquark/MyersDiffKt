@@ -61,3 +61,5 @@ freeline_project_description.json
 Pods
 xcuserdata
 *.generated.swift
+
+publish.gradle.kts

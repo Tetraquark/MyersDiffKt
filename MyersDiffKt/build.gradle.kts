@@ -1,18 +1,40 @@
 plugins {
+    id("com.android.library")
     kotlin("multiplatform")
     id("maven-publish")
 }
 
-group = "ru.tetraquark.kmplibs.myersdiffkt"
+group = "ru.tetraquark.kmplibs"
 version = Versions.MyersDiffKt
+
+android {
+    compileSdkVersion(Versions.compileSdkVersion)
+    buildToolsVersion = Versions.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion(Versions.minSdkVersion)
+        targetSdkVersion(Versions.targetSdkVersion)
+
+        versionCode = 1
+        versionName = Versions.MyersDiffKt
+    }
+
+    sourceSets.forEach {
+        it.manifest.srcFile("src/androidMain/AndroidManifest.xml")
+    }
+
+    packagingOptions {
+        exclude("META-INF/*.kotlin_module")
+    }
+}
 
 kotlin {
 
-    jvm {
-        withJava()
+    android {
+        publishLibraryVariants("release", "debug")
     }
+    jvm()
     macosX64()
-    iosArm32()
     iosArm64()
     iosX64()
 
@@ -28,6 +50,12 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:${Versions.coroutines}")
             }
         }
+        val androidMain by getting {
+            dependencies {
+                implementation(kotlin("stdlib"))
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}")
+            }
+        }
         val jvmMain by getting {
             dependencies {
                 implementation(kotlin("stdlib"))
@@ -35,11 +63,6 @@ kotlin {
             }
         }
         val macosX64Main by getting {
-            dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:${Versions.coroutines}")
-            }
-        }
-        val iosArm32Main by getting {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:${Versions.coroutines}")
             }
