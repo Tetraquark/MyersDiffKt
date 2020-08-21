@@ -13,6 +13,7 @@ The main part of the algorithm implementation is rewritten to Kotlin from the An
 Library version | Kotlin version
 ------------ | -------------
 1.0.0 | 1.3.61
+1.1.0 | 1.3.72
 
 ## Setup
 

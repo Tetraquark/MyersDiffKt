@@ -15,7 +15,7 @@ android {
         minSdkVersion(Versions.minSdkVersion)
         targetSdkVersion(Versions.targetSdkVersion)
 
-        versionCode = 1
+        versionCode = 2
         versionName = Versions.MyersDiffKt
     }
 

@@ -1,6 +1,6 @@
 object Versions {
-    const val kotlin = "1.3.61"
-    const val MyersDiffKt = "1.0.0"
+    const val kotlin = "1.3.72"
+    const val MyersDiffKt = "1.1.0"
     const val coroutines = "1.3.3"
 
     const val buildToolsVersion = "29.0.2"
