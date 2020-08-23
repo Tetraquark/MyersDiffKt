@@ -29,14 +29,12 @@ android {
 }
 
 kotlin {
-
     android {
         publishLibraryVariants("release", "debug")
     }
     jvm()
     macosX64()
-    iosArm64()
-    iosX64()
+    ios()
 
     sourceSets {
         // for unit-tests purposes
@@ -46,40 +44,17 @@ kotlin {
 
         commonMain {
             dependencies {
-                implementation(kotlin("stdlib-common"))
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:${Versions.coroutines}")
-            }
-        }
-        val androidMain by getting {
-            dependencies {
-                implementation(kotlin("stdlib"))
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}")
-            }
-        }
-        val jvmMain by getting {
-            dependencies {
-                implementation(kotlin("stdlib"))
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}")
             }
         }
-        val macosX64Main by getting {
-            dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:${Versions.coroutines}")
-            }
-        }
-        val iosArm64Main by getting {
-            dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:${Versions.coroutines}")
-            }
-        }
-        val iosX64Main by getting {
-            dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:${Versions.coroutines}")
-            }
-        }
+        val androidMain by getting
+        val jvmMain by getting
+        val macosX64Main by getting
+        val iosArm64Main by getting
+        val iosX64Main by getting
+
         val jvmTest by getting {
             dependencies {
-                implementation(kotlin("stdlib"))
                 implementation(kotlin("test"))
                 implementation(kotlin("test-junit"))
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}")

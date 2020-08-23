@@ -1,11 +1,19 @@
+buildscript {
+    repositories {
+        jcenter()
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}")
+        classpath("com.android.tools.build:gradle:3.5.4")
+    }
+}
+
 allprojects {
     repositories {
-        google()
         jcenter()
-
-        maven { url = uri("https://kotlin.bintray.com/kotlin") }
-        maven { url = uri("https://kotlin.bintray.com/kotlinx") }
+        google()
+        mavenCentral()
     }
-
-    configurations.create("compileClasspath")
 }

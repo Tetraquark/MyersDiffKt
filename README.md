@@ -12,18 +12,24 @@ The main part of the algorithm implementation is rewritten to Kotlin from the An
 
 Library version | Kotlin version
 ------------ | -------------
-1.0.0 | 1.3.61
+1.2.0 | 1.4.0
 1.1.0 | 1.3.72
+1.0.0 | 1.3.61
 
 ## Setup
 
-1. In **settings.gradle**:
-```
-enableFeaturePreview("GRADLE_METADATA")
+In root **build.gradle.kts** add the maven repository url:
+
+```kotlin
+allprojects {
+    repositories {
+        maven { url = uri("https://dl.bintray.com/tetraquark/kmplibs") }
+    }
+}
 ```
 
-2. In root **build.gradle** add the maven repository url:
-```
+or in root **build.gradle**
+```groovy
 allprojects {
     repositories {
         maven { url "https://dl.bintray.com/tetraquark/kmplibs" }
@@ -31,10 +37,18 @@ allprojects {
 }
 ```
 
-3. In a project **build.gradle**:
-```
+Then in a project **build.gradle.kts**:
+```kotlin
 dependencies {
-    implementation "ru.tetraquark.kmplibs:MyersDiffKt:1.0.0"
+    implementation("ru.tetraquark.kmplibs:MyersDiffKt:1.2.0")
+}
+```
+
+or in a project **build.gradle**:
+
+```groovy
+dependencies {
+    implementation "ru.tetraquark.kmplibs:MyersDiffKt:1.2.0"
 }
 ```
 

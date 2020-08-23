@@ -9,7 +9,6 @@ import org.junit.Before
 import org.junit.Test
 import kotlin.test.assertTrue
 
-@UseExperimental(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
 class DiffUtilTest {
 
     private var oldList = mutableListOf<String>()
@@ -73,7 +72,5 @@ class DiffUtilTest {
                 }
             }
         }
-
     }
-
 }

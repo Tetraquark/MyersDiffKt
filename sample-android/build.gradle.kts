@@ -29,7 +29,7 @@ android {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}")
     implementation("androidx.appcompat:appcompat:${Versions.appcompat}")
     implementation("androidx.recyclerview:recyclerview:${Versions.recyclerview}")
